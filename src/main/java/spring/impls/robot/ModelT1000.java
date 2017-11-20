@@ -5,52 +5,73 @@ import spring.interfaces.Head;
 import spring.interfaces.Leg;
 import spring.interfaces.Robot;
 
-public class ModelT1000  implements Robot{
+public class ModelT1000 implements Robot {
     private Hand hand;
-    private Head head;
     private Leg leg;
+    private Head head;
+
+    private String color;
+    private int year;
+    private boolean soundEnabled;
 
     public ModelT1000() {
     }
 
-    public ModelT1000(Hand hand, Head head, Leg leg) {
+    public ModelT1000(Hand hand, Leg leg, Head head) {
         this.hand = hand;
-        this.head = head;
         this.leg = leg;
+        this.head = head;
     }
 
-    public Hand getHand() {
-        return hand;
+    public ModelT1000(Hand hand, Leg leg, Head head, String color, int year, boolean soundEnabled) {
+        this.hand = hand;
+        this.leg = leg;
+        this.head = head;
+        this.color = color;
+        this.year = year;
+        this.soundEnabled = soundEnabled;
+    }
+
+    public ModelT1000(String color, int year, boolean soundEnabled) {
+        this.color = color;
+        this.year = year;
+        this.soundEnabled = soundEnabled;
     }
 
     public void setHand(Hand hand) {
         this.hand = hand;
     }
 
-    public Head getHead() {
-        return head;
+    public void setLeg(Leg leg) {
+        this.leg = leg;
     }
 
     public void setHead(Head head) {
         this.head = head;
     }
 
+    public Hand getHand() {
+        return hand;
+    }
+
     public Leg getLeg() {
         return leg;
     }
 
-    public void setLeg(Leg leg) {
-        this.leg = leg;
+    public Head getHead() {
+        return head;
     }
 
-    public void fire(){
+    public void action() {
         head.calc();
         hand.catchSomething();
         leg.go();
+        System.out.println("color: "+color);
+        System.out.println("year: "+year);
+        System.out.println("can play sound: "+soundEnabled);
     }
 
-    @Override
     public void dance() {
-        System.out.println("Model t1000 is dancing");
+        System.out.println("T1000 is dancing");
     }
 }
